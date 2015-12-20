@@ -6,8 +6,18 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <%= docs %>
-
-
+	<% for(var i=0; i<docs.length; i++) { %>
+		<div class="request">
+			<h4>Payload Recieved: <%= docs[i].date %></h4>
+			<ul>
+				<li><strong>Content Type:</strong> <%= docs[i].server[0].type %></li>
+				<li><strong>Content Length:</strong> <%= docs[i].server[0].length %></li>
+				<li><strong>Remote Address:</strong> <%= docs[i].server[0].address %></li>
+				<li><strong>User Agent:</strong> <%= docs[i].server[0].agent %></li>
+			</ul>
+			<h5>Body:</h5>
+			<pre><%= JSON.stringify(docs[i].payload[0]) %></pre>
+		</div>
+	<% } %> 
   </body>
 </html>
